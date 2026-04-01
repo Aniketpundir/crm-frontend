@@ -72,9 +72,9 @@ export default function Login() {
                     <span>New user?</span>
                 </div>
 
-                <Link to="/register" className="btn btn-secondary login-btn" style={{ textAlign: 'center', justifyContent: 'center' }}>
+                {/* <Link to="/register" className="btn btn-secondary login-btn" style={{ textAlign: 'center', justifyContent: 'center' }}>
                     Register New Account
-                </Link>
+                </Link> */}
 
                 <div className="login-roles">
                     <span>Roles: Admin • Employee • Client</span>
