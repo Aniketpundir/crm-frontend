@@ -1,0 +1,125 @@
+.navbar {
+    height: 56px;
+    background: #fff;
+    border-bottom: 1px solid #e5e3dc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-greeting {
+    font-size: 14px;
+    color: #5F5E5A;
+}
+
+.navbar-greeting strong {
+    color: #2C2C2A;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.notif-btn {
+    position: relative;
+    font-size: 16px;
+}
+
+.notif-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #A32D2D;
+    color: #fff;
+    font-size: 9px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-avatar-wrap {
+    position: relative;
+    cursor: pointer;
+}
+
+.navbar-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: #fff;
+    border: 1px solid #e5e3dc;
+    border-radius: 10px;
+    width: 180px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    z-index: 200;
+}
+
+.dropdown-info {
+    padding: 10px 14px 8px;
+}
+
+.dropdown-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2C2C2A;
+}
+
+.dropdown-role {
+    font-size: 11px;
+    color: #888;
+    text-transform: capitalize;
+}
+
+.navbar-dropdown hr {
+    border: none;
+    border-top: 1px solid #e5e3dc;
+    margin: 4px 0;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 9px 14px;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    color: #2C2C2A;
+    transition: background .1s;
+}
+
+.dropdown-item:hover {
+    background: #f1efe8;
+}
+
+.dropdown-item.logout {
+    color: #A32D2D;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.layout-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.layout-content {
+    flex: 1;
+    padding: 24px;
+}
