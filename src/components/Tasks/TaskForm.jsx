@@ -16,8 +16,12 @@ export default function TaskForm({ projectId, phaseId, members, task, onClose, o
     });
 
     useEffect(() => {
-        if (!members) getUsersAPI('employee').then(r => setEmployees(r.data));
-    }, []);
+        if (members) {
+            setEmployees(members);
+            return;
+        }
+        getUsersAPI('employee').then(r => setEmployees(r.data));
+    }, [members]);
 
     const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
 

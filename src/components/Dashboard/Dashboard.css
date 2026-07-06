@@ -1,5 +1,19 @@
 .dashboard {}
 
+.page-subtitle {
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -30,6 +44,13 @@
 .stat-label {
     font-size: 12px;
     color: var(--text-secondary);
+}
+
+.stat-meta {
+    color: var(--text-secondary);
+    font-size: 11px;
+    margin-top: 8px;
+    min-height: 16px;
 }
 
 .stat-purple .stat-icon,
@@ -66,6 +87,338 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.insight-grid,
+.dashboard-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.dashboard-columns {
+    margin-bottom: 0;
+}
+
+.pill {
+    background: var(--gray-light);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 9px;
+    white-space: nowrap;
+}
+
+.recommendation-list {
+    display: grid;
+    gap: 12px;
+}
+
+.recommendation {
+    align-items: flex-start;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: inherit;
+    display: flex;
+    gap: 12px;
+    padding: 14px;
+    text-decoration: none;
+    transition: border-color .15s, background .15s, transform .15s;
+}
+
+.recommendation:hover {
+    background: var(--bg);
+    border-color: #cfcac0;
+    transform: translateY(-1px);
+}
+
+.recommendation-icon {
+    align-items: center;
+    background: var(--primary-light);
+    border-radius: 8px;
+    color: var(--primary);
+    display: inline-flex;
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 800;
+    height: 32px;
+    justify-content: center;
+    width: 32px;
+}
+
+.recommendation-risk .recommendation-icon {
+    background: var(--danger-light);
+    color: var(--danger);
+}
+
+.recommendation-project .recommendation-icon {
+    background: var(--warning-light);
+    color: var(--warning);
+}
+
+.recommendation-follow-up .recommendation-icon {
+    background: var(--info-light);
+    color: var(--info);
+}
+
+.recommendation-title,
+.risk-title,
+.workload-name {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.recommendation-copy,
+.risk-meta,
+.workload-meta,
+.task-row-subtitle,
+.timeline-meta {
+    color: var(--text-secondary);
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.recommendation-action {
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.activity-chart {
+    align-items: end;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(7, minmax(34px, 1fr));
+    min-height: 190px;
+}
+
+.activity-day {
+    display: grid;
+    gap: 8px;
+    grid-template-rows: 150px auto;
+}
+
+.activity-bars {
+    align-items: end;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    padding: 8px 6px;
+}
+
+.activity-bar {
+    border-radius: 999px 999px 3px 3px;
+    display: block;
+    min-height: 8px;
+    width: 10px;
+}
+
+.activity-created {
+    background: var(--info);
+}
+
+.activity-completed {
+    background: var(--success);
+}
+
+.activity-label {
+    color: var(--text-secondary);
+    font-size: 11px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.risk-row,
+.workload-row {
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    color: inherit;
+    display: flex;
+    gap: 14px;
+    justify-content: space-between;
+    padding: 12px 0;
+    text-decoration: none;
+}
+
+.risk-row:last-child,
+.workload-row:last-child {
+    border-bottom: none;
+}
+
+.risk-row:hover {
+    background: var(--bg);
+    margin: 0 -14px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border-radius: 8px;
+}
+
+.risk-row-main {
+    min-width: 0;
+}
+
+.risk-row-side {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    gap: 8px;
+}
+
+.risk-score {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 700;
+    min-width: 38px;
+    text-align: right;
+}
+
+.date-chip {
+    background: var(--gray-light);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-secondary);
+    display: inline-flex;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 8px;
+    white-space: nowrap;
+}
+
+.task-row-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.task-row-link:hover {
+    background: var(--bg);
+    margin: 0 -14px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border-radius: 8px;
+}
+
+.workload-person {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    min-width: 0;
+}
+
+.avatar img {
+    border-radius: inherit;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.workload-score {
+    align-items: center;
+    display: grid;
+    flex: 0 0 150px;
+    gap: 8px;
+    grid-template-columns: minmax(80px, 1fr) 34px;
+}
+
+.workload-score .progress-bar {
+    width: 100%;
+}
+
+.workload-score span {
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: right;
+}
+
+.priority-list {
+    display: grid;
+    gap: 13px;
+}
+
+.priority-row {
+    align-items: center;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 74px minmax(0, 1fr) 28px;
+}
+
+.priority-row strong {
+    color: var(--text);
+    font-size: 13px;
+    text-align: right;
+}
+
+.priority-track {
+    background: var(--gray-light);
+    border-radius: 999px;
+    height: 8px;
+    overflow: hidden;
+}
+
+.priority-fill {
+    border-radius: inherit;
+    height: 100%;
+}
+
+.priority-urgent {
+    background: var(--danger);
+}
+
+.priority-high {
+    background: var(--warning);
+}
+
+.priority-medium {
+    background: var(--info);
+}
+
+.priority-low {
+    background: var(--gray);
+}
+
+.timeline-list {
+    display: grid;
+    gap: 0;
+}
+
+.timeline-item {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 12px minmax(0, 1fr);
+    padding: 10px 0;
+    position: relative;
+}
+
+.timeline-item:not(:last-child)::before {
+    background: var(--border);
+    bottom: -2px;
+    content: '';
+    left: 5px;
+    position: absolute;
+    top: 23px;
+    width: 1px;
+}
+
+.timeline-dot {
+    background: var(--primary);
+    border: 2px solid var(--primary-light);
+    border-radius: 50%;
+    height: 11px;
+    margin-top: 5px;
+    width: 11px;
+}
+
+.timeline-title {
+    color: var(--text);
+    font-size: 13px;
 }
 
 .card-header-row {
@@ -171,10 +524,51 @@
     .stats-grid {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    .insight-grid,
+    .dashboard-columns {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 600px) {
+    .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .header-actions {
+        justify-content: flex-start;
+        width: 100%;
+    }
+
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .activity-chart {
+        gap: 6px;
+        grid-template-columns: repeat(7, minmax(28px, 1fr));
+        overflow-x: auto;
+    }
+
+    .project-row,
+    .task-row,
+    .risk-row,
+    .workload-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .project-row-right,
+    .task-row-right,
+    .risk-row-side {
+        width: 100%;
+    }
+
+    .workload-score {
+        flex: none;
+        width: 100%;
     }
 }

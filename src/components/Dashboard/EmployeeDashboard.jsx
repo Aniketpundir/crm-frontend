@@ -1,30 +1,26 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getTasksAPI, getProjectsAPI } from '../../services/api';
+import { getTasksAPI } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 import './Dashboard.css';
 
 export default function EmployeeDashboard() {
     const { user } = useAuth();
     const [tasks, setTasks] = useState([]);
-    const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [now] = useState(() => Date.now());
 
     useEffect(() => {
-        Promise.all([
-            getTasksAPI({ assignedTo: user._id }),
-            getProjectsAPI()
-        ]).then(([t, p]) => {
-            setTasks(t.data);
-            setProjects(p.data);
-        }).catch(console.error).finally(() => setLoading(false));
+        getTasksAPI({ assignedTo: user._id })
+            .then(r => setTasks(r.data))
+            .catch(console.error)
+            .finally(() => setLoading(false));
     }, [user._id]);
 
     if (loading) return <div className="loading-screen"><div className="spinner" /></div>;
 
     const myTasks = tasks;
-    const todayStr = new Date().toDateString();
-    const dueSoon = myTasks.filter(t => t.status !== 'done' && new Date(t.deadline) <= new Date(Date.now() + 2 * 86400000));
+    const dueSoon = myTasks.filter(t => t.status !== 'done' && new Date(t.deadline) <= new Date(now + 2 * 86400000));
     const doneTasks = myTasks.filter(t => t.status === 'done');
     const inProgress = myTasks.filter(t => t.status === 'in-progress');
 

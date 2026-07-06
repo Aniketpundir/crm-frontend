@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { getProjectAPI, addPhaseAPI, deletePhaseAPI, updateProjectAPI } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 import TaskBoard from '../Tasks/TaskBoard';
@@ -11,8 +11,6 @@ const PHASE_COLORS = ['#534AB7', '#0F6E56', '#854F0B', '#185FA5', '#A32D2D', '#3
 export default function ProjectDetail() {
     const { id } = useParams();
     const { user } = useAuth();
-    console.log(user)
-    const navigate = useNavigate();
     const [project, setProject] = useState(null);
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -22,17 +20,15 @@ export default function ProjectDetail() {
     const [newPhaseName, setNewPhaseName] = useState('');
     const [phaseColor, setPhaseColor] = useState(PHASE_COLORS[0]);
 
-    const fetchProject = () => {
+    const fetchProject = useCallback(() => {
         getProjectAPI(id).then(r => {
             setProject(r.data.project);
             setTasks(r.data.tasks);
-            if (r.data.project.phases?.length > 0 && !activePhase) {
-                setActivePhase(r.data.project.phases[0]._id);
-            }
+            setActivePhase(current => current || r.data.project.phases?.[0]?._id || null);
         }).catch(console.error).finally(() => setLoading(false));
-    };
+    }, [id]);
 
-    useEffect(() => { fetchProject(); }, [id]);
+    useEffect(() => { fetchProject(); }, [fetchProject]);
 
     const handleAddPhase = async (e) => {
         e.preventDefault();
@@ -57,8 +53,6 @@ export default function ProjectDetail() {
     if (!project) return <div>Project not found</div>;
 
     const phaseTasks = tasks.filter(t => t.phaseId?.toString() === activePhase);
-    const donePhaseTasks = phaseTasks.filter(t => t.status === 'done').length;
-    const phaseProgress = phaseTasks.length ? Math.round((donePhaseTasks / phaseTasks.length) * 100) : 0;
 
     const getProgressColor = (pct) => pct === 100 ? 'var(--success)' : pct >= 60 ? '#EF9F27' : 'var(--primary)';
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import './Login.css';
@@ -25,11 +25,9 @@ export default function Login() {
         }
     };
 
-
     return (
         <div className="login-page">
             <div className="login-card">
-
                 <div className="login-logo">
                     <div className="logo-icon">C</div>
                     <span>CRM System</span>
@@ -59,7 +57,7 @@ export default function Login() {
                             type="password"
                             value={password}
                             onChange={e => setPassword(e.target.value)}
-                            placeholder="••••••••"
+                            placeholder="Password"
                             required
                         />
                     </div>
@@ -72,12 +70,12 @@ export default function Login() {
                     <span>New user?</span>
                 </div>
 
-                {/* <Link to="/register" className="btn btn-secondary login-btn" style={{ textAlign: 'center', justifyContent: 'center' }}>
+                <Link to="/register" className="btn btn-secondary login-btn" style={{ textAlign: 'center', justifyContent: 'center' }}>
                     Register New Account
-                </Link> */}
+                </Link>
 
                 <div className="login-roles">
-                    <span>Roles: Admin • Employee • Client</span>
+                    <span>Roles: Admin - Employee - Client</span>
                 </div>
             </div>
         </div>

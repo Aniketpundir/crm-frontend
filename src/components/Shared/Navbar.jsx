@@ -7,7 +7,7 @@ import './Navbar.css';
 export default function Navbar() {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
-    const [notifications, setNotifications] = useState([]);
+    const [notifications] = useState([]);
     const [showNotif, setShowNotif] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
 

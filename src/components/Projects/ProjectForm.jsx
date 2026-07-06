@@ -19,19 +19,13 @@ export default function ProjectForm() {
 
     useEffect(() => {
         getClientsAPI()
-            .then(r => {
-                console.log('Clients loaded:', r.data);
-                setClients(r.data);
-            })
+            .then(r => setClients(r.data))
             .catch(err => {
                 console.error('Client load error:', err.response?.data || err.message);
                 setClients([]);
             });
         getUsersAPI('employee')
-            .then(r => {
-                console.log('Employees loaded:', r.data);
-                setEmployees(r.data);
-            })
+            .then(r => setEmployees(r.data))
             .catch(err => {
                 console.error('Employee load error:', err.response?.data || err.message);
                 setEmployees([]);
@@ -50,7 +44,7 @@ export default function ProjectForm() {
                 });
             });
         }
-    }, [id]);
+    }, [id, isEdit]);
 
     const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
 

@@ -11,7 +11,7 @@ const COLUMNS = [
     { key: 'done', label: 'Done', color: '#3B6D11' },
 ];
 
-export default function TaskBoard({ projectId, phaseId, tasks: propTasks, onUpdate, members, phases }) {
+export default function TaskBoard({ projectId, phaseId, tasks: propTasks, onUpdate, members }) {
     const { user } = useAuth();
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(!propTasks);
@@ -25,7 +25,7 @@ export default function TaskBoard({ projectId, phaseId, tasks: propTasks, onUpda
         if (projectId) params.projectId = projectId;
         if (user.role === 'employee') params.assignedTo = user._id;
         getTasksAPI(params).then(r => setTasks(r.data)).catch(console.error).finally(() => setLoading(false));
-    }, [propTasks, projectId]);
+    }, [propTasks, projectId, user._id, user.role]);
 
     const handleStatusChange = async (taskId, newStatus) => {
         const res = await updateTaskStatusAPI(taskId, newStatus);

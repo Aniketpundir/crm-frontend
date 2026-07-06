@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getUsersAPI, createUserAPI, updateUserAPI, deleteUserAPI } from '../../services/api';
+import { getUsersAPI, createUserAPI, updateUserAPI } from '../../services/api';
 import '../Clients/Clients.css';
 
 export default function UserManagement() {
